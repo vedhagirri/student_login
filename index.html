@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form | Selenium Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div><strong>StudentLab</strong><small>Selenium practice</small></div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <button class="nav-group" type="button" data-toggle="elements">
+          <span class="nav-icon">▤</span><span>Elements</span><span class="chevron">⌄</span>
+        </button>
+        <div class="nav-children hidden" id="elements-menu">
+          <button class="nav-item" type="button" data-page="Text Box">Text Box</button>
+          <button class="nav-item" type="button" data-page="Buttons">Buttons</button>
+        </div>
+
+        <button class="nav-group active-group" type="button" data-toggle="forms">
+          <span class="nav-icon">▣</span><span>Forms</span><span class="chevron">⌃</span>
+        </button>
+        <div class="nav-children" id="forms-menu">
+          <button class="nav-item active" type="button" data-page="Practice Form">▤ <span>Practice Form</span></button>
+          <button class="nav-item" type="button" data-page="Login">♙ <span>Login</span></button>
+          <button class="nav-item" type="button" data-page="Register">♧ <span>Register</span></button>
+        </div>
+
+        <button class="nav-group" type="button" data-toggle="alerts">
+          <span class="nav-icon">♧</span><span>Alerts, Frames &amp; Windows</span><span class="chevron">⌄</span>
+        </button>
+        <div class="nav-children hidden" id="alerts-menu">
+          <button class="nav-item" type="button" data-page="Alerts">Alerts</button>
+          <button class="nav-item" type="button" data-page="Frames">Frames</button>
+          <button class="nav-item" type="button" data-page="Windows">Windows</button>
+        </div>
+
+        <button class="nav-group" type="button" data-toggle="widgets">
+          <span class="nav-icon">▦</span><span>Widgets</span><span class="chevron">⌄</span>
+        </button>
+        <div class="nav-children hidden" id="widgets-menu">
+          <button class="nav-item" type="button" data-page="Date Picker">Date Picker</button>
+          <button class="nav-item" type="button" data-page="Dropdown">Dropdown</button>
+        </div>
+
+        <button class="nav-group" type="button" data-toggle="interaction">
+          <span class="nav-icon">➤</span><span>Interaction</span><span class="chevron">⌄</span>
+        </button>
+        <div class="nav-children hidden" id="interaction-menu">
+          <button class="nav-item" type="button" data-page="Sortable">Sortable</button>
+          <button class="nav-item" type="button" data-page="Selectable">Selectable</button>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer"><span class="status-dot"></span> Practice environment <span class="version">v1.0</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">FORMS / PRACTICE</p>
+          <h1>Student Registration Form</h1>
+          <p class="subtitle">Fill in the details below to register as a student.</p>
+        </div>
+        <div class="top-pill"><span class="status-dot"></span> Demo mode</div>
+      </header>
+
+      <nav class="registration-steps" aria-label="Registration progress">
+        <button type="button" class="step-item active" id="step1Button" aria-label="Go to personal details">
+          <span class="step-number">1</span><span class="step-label">Personal Details</span>
+        </button>
+        <span class="step-connector" aria-hidden="true"></span>
+        <button type="button" class="step-item" id="step2Button" aria-label="Academic details" disabled>
+          <span class="step-number">2</span><span class="step-label">Academic Details</span>
+        </button>
+      </nav>
+
+      <section class="form-card" id="formCard">
+        <div class="card-heading">
+          <div class="heading-icon">✦</div>
+          <div>
+            <h2>Registration details</h2>
+            <p>Fields marked with <span class="required">*</span> are required.</p>
+          </div>
+        </div>
+
+        <form id="registrationForm">
+          <div class="form-row">
+            <label for="studentName">Name <span class="required">*</span></label>
+            <input id="studentName" name="studentName" type="text" placeholder="Enter your full name" autocomplete="name" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email <span class="required">*</span></label>
+            <input id="email" name="email" type="email" placeholder="example@gmail.com" autocomplete="email" required>
+          </div>
+          <div class="form-row">
+            <label for="age">Age <span class="required">*</span></label>
+            <input id="age" name="age" type="number" min="1" max="100" placeholder="Enter your age" required>
+          </div>
+          <fieldset class="form-row">
+            <legend>Gender <span class="required">*</span></legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="gender" value="Male" required> <span>Male</span></label>
+              <label class="choice"><input type="radio" name="gender" value="Female"> <span>Female</span></label>
+              <label class="choice"><input type="radio" name="gender" value="Other"> <span>Other</span></label>
+            </div>
+          </fieldset>
+          <div class="form-row">
+            <label for="mobile">Mobile (10 digits) <span class="required">*</span></label>
+            <input id="mobile" name="mobile" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10 digit mobile number" required>
+            <small class="hint">Use exactly 10 digits.</small>
+          </div>
+          <div class="form-row">
+            <label for="dob">Date of Birth</label>
+            <input id="dob" name="dob" type="date">
+          </div>
+          <div class="form-row">
+            <label for="course">College Course <span class="required">*</span></label>
+            <select id="course" name="course" required>
+              <option value="">Choose Course</option>
+              <option>B.Sc. Computer Science</option>
+              <option>B.Sc. Information Technology (IT)</option>
+              <option>BCA (Bachelor of Computer Applications)</option>
+              <option>B.Com.</option>
+              <option>B.Com. Computer Applications</option>
+              <option>BBA</option>
+              <option>B.Sc. Mathematics</option>
+              <option>B.Sc. Physics</option>
+              <option>B.Sc. Chemistry</option>
+              <option>BA English</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="picture">Picture</label>
+            <input id="picture" name="picture" type="file" accept="image/*">
+            <small class="hint" id="fileHint">Optional image upload; the file is not sent to a server.</small>
+          </div>
+          <div class="form-row align-start">
+            <label for="address">Current Address</label>
+            <textarea id="address" name="address" rows="3" placeholder="Enter your current address"></textarea>
+          </div>
+          <div class="location-row">
+            <div class="form-row">
+              <label for="state">State</label>
+              <select id="state" name="state">
+                <option value="">Choose State</option>
+                <option>Tamil Nadu</option>
+                <option>Puducherry</option>
+                <option>Karnataka</option>
+                <option>Kerala</option>
+                <option>Andhra Pradesh</option>
+                <option>Telangana</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="city">City</label>
+              <select id="city" name="city" disabled>
+                <option value="">Choose City</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="button button-secondary" type="reset">Reset form</button>
+            <button class="button button-primary" type="submit"><span>➤</span> Submit registration</button>
+          </div>
+        </form>
+        <div class="result-message hidden" id="resultMessage" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="form-card hidden" id="academicCard">
+        <div class="card-heading">
+          <div class="heading-icon">🎓</div>
+          <div>
+            <h2>Academic Details</h2>
+            <p>Enter your 10th and 12th standard details to complete registration.</p>
+          </div>
+        </div>
+
+        <form id="academicForm">
+          <h3 class="section-title">10th Standard Details</h3>
+          <div class="form-row">
+            <label for="tenthSchool">School Name <span class="required">*</span></label>
+            <input id="tenthSchool" name="tenthSchool" type="text" placeholder="Enter 10th school name" required>
+          </div>
+          <div class="form-row">
+            <label for="tenthBoard">Board <span class="required">*</span></label>
+            <select id="tenthBoard" name="tenthBoard" required>
+              <option value="">Choose Board</option><option>State Board</option><option>CBSE</option><option>ICSE</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="tenthYear">Passing Year <span class="required">*</span></label>
+            <input id="tenthYear" name="tenthYear" type="number" min="1990" max="2035" placeholder="e.g. 2023" required>
+          </div>
+          <div class="form-row">
+            <label for="tenthMarks">Marks / Percentage <span class="required">*</span></label>
+            <input id="tenthMarks" name="tenthMarks" type="number" min="0" max="100" step="0.01" placeholder="e.g. 85.5" required>
+          </div>
+
+          <h3 class="section-title">12th Standard Details</h3>
+          <div class="form-row">
+            <label for="twelfthSchool">School Name <span class="required">*</span></label>
+            <input id="twelfthSchool" name="twelfthSchool" type="text" placeholder="Enter 12th school name" required>
+          </div>
+          <div class="form-row">
+            <label for="twelfthBoard">Board <span class="required">*</span></label>
+            <select id="twelfthBoard" name="twelfthBoard" required>
+              <option value="">Choose Board</option><option>State Board</option><option>CBSE</option><option>ISC</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="twelfthYear">Passing Year <span class="required">*</span></label>
+            <input id="twelfthYear" name="twelfthYear" type="number" min="1990" max="2035" placeholder="e.g. 2025" required>
+          </div>
+          <div class="form-row">
+            <label for="twelfthMarks">Marks / Percentage <span class="required">*</span></label>
+            <input id="twelfthMarks" name="twelfthMarks" type="number" min="0" max="100" step="0.01" placeholder="e.g. 90" required>
+          </div>
+          <div class="form-actions">
+            <button class="button button-secondary" type="button" id="backToRegistration">Back</button>
+            <button class="button button-primary" type="submit">Complete Registration</button>
+          </div>
+        </form>
+        <div class="result-message hidden" id="finalResult" role="status" aria-live="polite"></div>
+      </section>
+
+      <footer class="page-footer">StudentLab · Frontend demo for Selenium practice · No data is sent to a server</footer>
+    </main>
+  </div>
+
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
